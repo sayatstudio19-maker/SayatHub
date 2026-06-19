@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="theme-color" content="#070B14">
+  <title>SayatHub — Smart Management Platform</title>
+  <meta name="description" content="Manage your School, Business and more — all in one place.">
+  <meta name="author" content="SayatStudio">
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     GLOBAL LOGO WATERMARK  (JS sets background-image)
+═══════════════════════════════════════════════════════════ -->
+<div class="bg-watermark" id="bgWatermark"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOP NAVIGATION
+═══════════════════════════════════════════════════════════ -->
+<nav class="topnav" id="topnav">
+
+  <div class="nav-left">
+    <button class="back-nav-btn" id="globalBackBtn" style="display:none" title="Go Back">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="logo" id="logoHome" title="Go to Home">SayatHub</div>
+  </div>
+
+  <div class="nav-breadcrumb" id="navBreadcrumb" style="display:none">
+    <span class="bc" id="bc1"></span>
+    <span class="bc-sep" id="bcsep1">›</span>
+    <span class="bc bc-active" id="bc2"></span>
+  </div>
+
+  <div class="nav-right">
+    <!-- Dark / Light Mode Toggle -->
+    <button class="nav-icon-btn" id="themeToggleBtn" title="Toggle Dark / Light Mode">
+      <svg id="iconMoon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="iconSun"  width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+
+    <!-- Help -->
+    <button class="nav-icon-btn" id="helpBtn" title="Help">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17" stroke-width="3"/></svg>
+    </button>
+
+    <!-- Settings (visible after login) -->
+    <button class="nav-icon-btn" id="settingsBtn" style="display:none" title="Settings">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M4.93 19.07l1.41-1.41M19.07 19.07l-1.41-1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+    </button>
+
+    <!-- Logout (visible after login) -->
+    <button class="nav-icon-btn danger-icon" id="logoutBtn" style="display:none" title="Logout">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+    </button>
+  </div>
+
+</nav><!-- end topnav -->
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 1 — LANDING
+═══════════════════════════════════════════════════════════ -->
+<section class="screen active" id="screen-landing">
+
+  <div class="hero">
+    <div class="hero-badge">
+      <span class="pulse-dot"></span>
+      All in One Place
+    </div>
+    <h1 class="hero-title">
+      Manage Everything<br>
+      <span class="gradient-text">Smarter &amp; Faster</span>
+    </h1>
+    <p class="hero-sub">School, Business — track everything on one platform.</p>
+    <p class="section-eyebrow">Who are you? Choose below</p>
+  </div>
+
+  <div class="module-grid">
+
+    <div class="module-card school-card" data-module="school">
+      <div class="card-glow school-glow"></div>
+      <div class="module-icon-wrap school-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </div>
+      <div class="module-tag school-tag">Education</div>
+      <h3>School</h3>
+      <p>Manage classes, students &amp; fees in one place.</p>
+      <div class="module-arrow">↗</div>
+    </div>
+
+    <div class="module-card business-card" data-module="business">
+      <div class="card-glow business-glow"></div>
+      <div class="module-icon-wrap business-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <div class="module-tag business-tag">Finance</div>
+      <h3>Business</h3>
+      <p>Track income, expenses, profit &amp; loss.</p>
+      <div class="module-arrow">↗</div>
+    </div>
+
+    <div class="module-card other-card" data-module="other">
+      <div class="card-glow other-glow"></div>
+      <div class="module-icon-wrap other-wrap">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#FBBF24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+      </div>
+      <div class="module-tag other-tag">Coming Soon</div>
+      <h3>Other</h3>
+      <p>More features arriving soon...</p>
+      <div class="module-arrow lock-icon">🔒</div>
+    </div>
+
+  </div>
+
+  <p class="footer-note">Powered by <strong>SayatStudio</strong></p>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 2 — SCHOOL SUB SELECT
+═══════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-school-sub">
+  <div class="screen-center">
+    <div class="screen-badge school-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      School Module
+    </div>
+    <h2 class="screen-title">Select Your Role</h2>
+    <p class="screen-sub">Are you a School Admin or a Student?</p>
+
+    <div class="sub-grid">
+      <div class="sub-card" data-sub="admin">
+        <div class="sub-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="sub-info">
+          <h4>School / Institution</h4>
+          <p>Manage classes, students &amp; fees</p>
+        </div>
+        <span class="sub-chevron">›</span>
+      </div>
+      <div class="sub-card" data-sub="student">
+        <div class="sub-icon-wrap">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="sub-info">
+          <h4>Student</h4>
+          <p>View your profile &amp; fee status</p>
+        </div>
+        <span class="sub-chevron">›</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 3 — SCHOOL AUTH
+═══════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-school-auth">
+  <div class="auth-wrap">
+    <div class="auth-card">
+
+      <div class="auth-top">
+        <div class="auth-logo-mark school-mark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h2>School Portal</h2>
+        <p>Login or register your school</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="school-login">Login</button>
+        <button class="auth-tab" data-tab="school-register">Register</button>
+      </div>
+
+      <!-- Login -->
+      <div class="tab-pane active" id="pane-school-login">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="sl-email" class="form-input" placeholder="school@example.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="sl-pass" class="form-input" placeholder="••••••••" autocomplete="current-password">
+            <button class="eye-btn" data-for="sl-pass" type="button" title="Show/Hide">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="form-error" id="sl-error"></div>
+        <button class="btn-primary" id="schoolLoginBtn">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-loader" style="display:none"></span>
+        </button>
+        <button class="link-btn mt-12" id="forgotPassSchool">Forgot password?</button>
+      </div>
+
+      <!-- Register -->
+      <div class="tab-pane" id="pane-school-register">
+
+        <!-- Logo Upload -->
+        <div class="logo-upload-box">
+          <div class="logo-preview-ring" id="schoolLogoPreview">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p class="logo-preview-hint">Logo</p>
+          </div>
+          <div class="logo-upload-text">
+            <p class="logo-title">Upload School Logo</p>
+            <p class="logo-hint">Shown as a faint watermark on dashboards</p>
+            <button class="btn-upload" type="button" id="schoolLogoBtn">Choose Image</button>
+            <input type="file" id="schoolLogoInput" accept="image/png,image/jpeg,image/svg+xml,image/webp" style="display:none">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">School Name <span class="req">*</span></label>
+          <input type="text" id="sr-name" class="form-input" placeholder="e.g. Dhaka Model High School">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Unique School Code <span class="req">*</span></label>
+            <input type="text" id="sr-code" class="form-input" placeholder="e.g. DMS2024" maxlength="12" style="text-transform:uppercase">
+            <span class="form-hint">Students use this code to register</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">District</label>
+            <input type="text" id="sr-district" class="form-input" placeholder="e.g. Dhaka">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address <span class="req">*</span></label>
+          <input type="email" id="sr-email" class="form-input" placeholder="school@example.com" autocomplete="email">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Password <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="password" id="sr-pass" class="form-input" placeholder="Min. 6 characters">
+              <button class="eye-btn" data-for="sr-pass" type="button">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm Password <span class="req">*</span></label>
+            <input type="password" id="sr-pass2" class="form-input" placeholder="••••••••">
+          </div>
+        </div>
+        <div class="form-error" id="sr-error"></div>
+        <button class="btn-primary" id="schoolRegBtn">
+          <span class="btn-text">Create School Account</span>
+          <span class="btn-loader" style="display:none"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 4 — STUDENT AUTH  (3-step)
+═══════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-student-auth">
+  <div class="auth-wrap">
+    <div class="auth-card">
+
+      <div class="auth-top">
+        <div class="auth-logo-mark school-mark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <h2>Student Login</h2>
+        <p>Use the details provided by your school</p>
+      </div>
+
+      <!-- Returning user toggle -->
+      <div class="returning-row">
+        <span>Already have an account?</span>
+        <button class="link-btn" id="toggleStudentLogin">Sign In with Email →</button>
+      </div>
+
+      <!-- Email login panel -->
+      <div id="studentEmailLoginPanel" style="display:none">
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" id="sel-email" class="form-input" placeholder="your@email.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="sel-pass" class="form-input" placeholder="••••••••" autocomplete="current-password">
+            <button class="eye-btn" data-for="sel-pass" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="form-error" id="sel-error"></div>
+        <button class="btn-primary" id="studentEmailLoginBtn">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-loader" style="display:none"></span>
+        </button>
+        <button class="link-btn mt-12" id="toggleStudentReg">← New Registration</button>
+      </div>
+
+      <!-- Registration steps -->
+      <div id="studentRegPanel">
+
+        <div class="step-progress">
+          <div class="step-item step-active" id="stepDot1"><div class="step-dot">1</div><span>Verify</span></div>
+          <div class="step-line" id="stepLine1"></div>
+          <div class="step-item" id="stepDot2"><div class="step-dot">2</div><span>OTP</span></div>
+          <div class="step-line" id="stepLine2"></div>
+          <div class="step-item" id="stepDot3"><div class="step-dot">3</div><span>Account</span></div>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="reg-step active" id="reg-step-1">
+          <p class="step-heading">School Verification</p>
+          <div class="form-group">
+            <label class="form-label">School Unique Code <span class="req">*</span></label>
+            <input type="text" id="s1-code" class="form-input" placeholder="Code provided by your school" maxlength="12" style="text-transform:uppercase">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Identity Card Number <span class="req">*</span></label>
+            <input type="text" id="s1-idcard" class="form-input" placeholder="ID card number from your school">
+            <span class="form-hint">The number printed on your school-issued ID card</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Class <span class="req">*</span></label>
+              <select id="s1-class" class="form-input">
+                <option value="">Select Class</option>
+                <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+                <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+                <option>Class 7</option><option>Class 8</option><option>Class 9</option>
+                <option>Class 10</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Roll Number <span class="req">*</span></label>
+              <input type="number" id="s1-roll" class="form-input" placeholder="Roll No." min="1">
+            </div>
+          </div>
+          <div class="form-error" id="s1-error"></div>
+          <button class="btn-primary" id="step1NextBtn">
+            <span class="btn-text">Next Step →</span>
+            <span class="btn-loader" style="display:none"></span>
+          </button>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="reg-step" id="reg-step-2">
+          <p class="step-heading">Phone Verification</p>
+
+          <div class="verified-box" id="verifiedBox" style="display:none">
+            <div class="verified-tick">✓</div>
+            <div id="verifiedBoxText"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mobile Number <span class="req">*</span></label>
+            <div class="phone-wrap">
+              <span class="phone-prefix">+880</span>
+              <input type="tel" id="s2-phone" class="form-input phone-field" placeholder="01XXXXXXXXX" maxlength="11">
+            </div>
+            <span class="form-hint">Must match the number registered by your school</span>
+          </div>
+
+          <div id="recaptcha-container"></div>
+          <div class="form-error" id="s2-error"></div>
+
+          <button class="btn-primary" id="sendOTPBtn">
+            <span class="btn-text">Send OTP →</span>
+            <span class="btn-loader" style="display:none"></span>
+          </button>
+
+          <div id="otpInputArea" style="display:none">
+            <div class="otp-label-row">
+              <span>OTP sent to your phone</span>
+              <button class="link-btn" id="resendOTPBtn">Resend</button>
+            </div>
+            <div class="otp-boxes">
+              <input type="number" class="otp-box" maxlength="1" data-index="0">
+              <input type="number" class="otp-box" maxlength="1" data-index="1">
+              <input type="number" class="otp-box" maxlength="1" data-index="2">
+              <span class="otp-dash">—</span>
+              <input type="number" class="otp-box" maxlength="1" data-index="3">
+              <input type="number" class="otp-box" maxlength="1" data-index="4">
+              <input type="number" class="otp-box" maxlength="1" data-index="5">
+            </div>
+            <div class="form-error" id="otp-error"></div>
+            <button class="btn-primary" id="verifyOTPBtn">
+              <span class="btn-text">Verify OTP →</span>
+              <span class="btn-loader" style="display:none"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="reg-step" id="reg-step-3">
+          <p class="step-heading">Create Account</p>
+          <div class="form-group">
+            <label class="form-label">Full Name <span class="req">*</span></label>
+            <input type="text" id="s3-name" class="form-input" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address <span class="req">*</span></label>
+            <input type="email" id="s3-email" class="form-input" placeholder="your@email.com" autocomplete="email">
+            <span class="form-hint">You will use this email to login next time</span>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Password <span class="req">*</span></label>
+              <div class="input-wrap">
+                <input type="password" id="s3-pass" class="form-input" placeholder="Min. 6 characters">
+                <button class="eye-btn" data-for="s3-pass" type="button">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Confirm Password <span class="req">*</span></label>
+              <input type="password" id="s3-pass2" class="form-input" placeholder="••••••••">
+            </div>
+          </div>
+          <div class="form-error" id="s3-error"></div>
+          <button class="btn-primary" id="completeRegBtn">
+            <span class="btn-text">✓ Complete Registration</span>
+            <span class="btn-loader" style="display:none"></span>
+          </button>
+        </div>
+
+      </div><!-- /studentRegPanel -->
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 5 — BUSINESS AUTH
+═══════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-business-auth">
+  <div class="auth-wrap">
+    <div class="auth-card">
+
+      <div class="auth-top">
+        <div class="auth-logo-mark business-mark">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h2>Business Portal</h2>
+        <p>Login or register your business</p>
+      </div>
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-tab="biz-login">Login</button>
+        <button class="auth-tab" data-tab="biz-register">Register</button>
+      </div>
+
+      <!-- Login -->
+      <div class="tab-pane active" id="pane-biz-login">
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" id="bl-email" class="form-input" placeholder="business@example.com" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="bl-pass" class="form-input" placeholder="••••••••" autocomplete="current-password">
+            <button class="eye-btn" data-for="bl-pass" type="button">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="form-error" id="bl-error"></div>
+        <button class="btn-primary" id="bizLoginBtn">
+          <span class="btn-text">Sign In</span>
+          <span class="btn-loader" style="display:none"></span>
+        </button>
+        <button class="link-btn mt-12" id="forgotPassBiz">Forgot password?</button>
+      </div>
+
+      <!-- Register -->
+      <div class="tab-pane" id="pane-biz-register">
+
+        <!-- Logo Upload -->
+        <div class="logo-upload-box">
+          <div class="logo-preview-ring" id="bizLogoPreview">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p class="logo-preview-hint">Logo</p>
+          </div>
+          <div class="logo-upload-text">
+            <p class="logo-title">Upload Business Logo</p>
+            <p class="logo-hint">Shown as a faint watermark on your dashboard</p>
+            <button class="btn-upload" type="button" id="bizLogoBtn">Choose Image</button>
+            <input type="file" id="bizLogoInput" accept="image/png,image/jpeg,image/svg+xml,image/webp" style="display:none">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Business Name <span class="req">*</span></label>
+          <input type="text" id="br-bizname" class="form-input" placeholder="e.g. Ahmed Garments">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Business Type <span class="req">*</span></label>
+            <select id="br-type" class="form-input">
+              <option value="">Select Type</option>
+              <option>Garments</option><option>Retail Shop</option>
+              <option>Restaurant / Food</option><option>Pharmacy</option>
+              <option>IT / Tech</option><option>Agriculture</option>
+              <option>Transport / Logistics</option><option>Construction</option>
+              <option>Healthcare</option><option>Education</option><option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone <span class="req">*</span></label>
+            <input type="tel" id="br-phone" class="form-input" placeholder="01XXXXXXXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Owner Name <span class="req">*</span></label>
+            <input type="text" id="br-owner" class="form-input" placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">District</label>
+            <input type="text" id="br-district" class="form-input" placeholder="e.g. Dhaka">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Business Address</label>
+          <input type="text" id="br-address" class="form-input" placeholder="Full address">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address <span class="req">*</span></label>
+          <input type="email" id="br-email" class="form-input" placeholder="business@example.com" autocomplete="email">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Password <span class="req">*</span></label>
+            <div class="input-wrap">
+              <input type="password" id="br-pass" class="form-input" placeholder="Min. 6 characters">
+              <button class="eye-btn" data-for="br-pass" type="button">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm Password <span class="req">*</span></label>
+            <input type="password" id="br-pass2" class="form-input" placeholder="••••••••">
+          </div>
+        </div>
+        <div class="form-error" id="br-error"></div>
+        <button class="btn-primary" id="bizRegBtn">
+          <span class="btn-text">Create Business Account</span>
+          <span class="btn-loader" style="display:none"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 6 — SCHOOL DASHBOARD
+═══════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-school-dash">
+
+  <div class="dash-bar">
+    <div class="dash-bar-left">
+      <div class="dash-org-logo" id="schoolDashLogo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      </div>
+      <div>
+        <h3 class="dash-org-name" id="schoolDashName">School Name</h3>
+        <p class="dash-org-meta" id="schoolDashMeta">Code: ——</p>
+      </div>
+    </div>
+    <div class="dash-bar-right">
+      <div class="live-badge">● Live</div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box blue-stat">
+      <div class="stat-ico">📚</div>
+      <div class="stat-num" id="s-stat-classes">0</div>
+      <div class="stat-lbl">Classes</div>
+    </div>
+    <div class="stat-box purple-stat">
+      <div class="stat-ico">👥</div>
+      <div class="stat-num" id="s-stat-students">0</div>
+      <div class="stat-lbl">Students</div>
+    </div>
+    <div class="stat-box green-stat">
+      <div class="stat-ico">✅</div>
+      <div class="stat-num" id="s-stat-paid">৳0</div>
+      <div class="stat-lbl">Fee Collected</div>
+    </div>
+    <div class="stat-box amber-stat">
+      <div class="stat-ico">⏳</div>
+      <div class="stat-num" id="s-stat-pending">৳0</div>
+      <div class="stat-lbl">Pending</div>
+    </div>
+  </div>
+
+  <div class="alert-banner" id="pendingBanner" style="display:none">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-width="3"/></svg>
+    <span id="pendingBannerText"></span>
+  </div>
+
+  <div class="dash-main">
+
+    <div class="dash-panel classes-panel">
+      <div class="panel-head">
+        <h4>📚 Classes</h4>
+        <button class="panel-add-btn" id="addClassBtn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Add Class
+        </button>
+      </div>
+      <div class="class-list" id="classList">
+        <div class="empty-hint">
+          <span>📚</span>
+          <p>No classes yet.<br>Click "+ Add Class".</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-panel students-panel">
+      <div class="panel-head">
+        <h4 id="studentsPanelTitle">👥 Students</h4>
+        <div class="panel-actions">
+          <input type="text" class="search-box" id="studentSearch" placeholder="🔍 Search student...">
+          <button class="panel-add-btn" id="addStudentBtn" style="display:none">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add Student
+          </button>
+          <button class="panel-danger-btn" id="deleteClassBtn" style="display:none" title="Delete this class">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="fee-month-bar" id="feeMonthBar" style="display:none">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="fee-month-label">Fee Month:</span>
+        <select class="month-select" id="feeMonthSelect">
+          <option value="01">January</option><option value="02">February</option>
+          <option value="03">March</option><option value="04">April</option>
+          <option value="05">May</option><option value="06" selected>June</option>
+          <option value="07">July</option><option value="08">August</option>
+          <option value="09">September</option><option value="10">October</option>
+          <option value="11">November</option><option value="12">December</option>
+        </select>
+        <select class="month-select year-sel" id="feeYearSelect">
+          <option value="2024">2024</option>
+          <option value="2025" selected>2025</option>
+          <option value="2026">2026</option>
+        </select>
+        <button class="small-btn" id="setFeeAllBtn">💰 Set Fee (All)</button>
+      </div>
+
+      <div class="student-list" id="studentList">
+        <div class="empty-hint">
+          <span>👈</span>
+          <p>Select a class from<br>the left panel.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 7 — STUDENT DASHBOARD
+═══════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-student-dash">
+
+  <div class="dash-bar">
+    <div class="dash-bar-left">
+      <div class="dash-org-logo" id="stuDashSchoolLogo">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/></svg>
+      </div>
+      <div>
+        <h3 class="dash-org-name" id="stuDashSchoolName">School</h3>
+        <p class="dash-org-meta" id="stuDashClass">Class — · Roll —</p>
+      </div>
+    </div>
+    <div class="dash-bar-right">
+      <div class="status-chip" id="stuStatusChip">Active</div>
+    </div>
+  </div>
+
+  <div class="stu-dash-grid">
+
+    <div class="stu-profile-panel">
+      <div class="stu-photo-area">
+        <div class="stu-photo-ring">
+          <img id="stuProfilePhoto" src="" alt="" style="display:none">
+          <div class="stu-photo-fallback" id="stuPhotoFallback">S</div>
+        </div>
+      </div>
+      <h3 class="stu-profile-name" id="stuProfileName">—</h3>
+      <p class="stu-profile-school" id="stuProfileSchool">—</p>
+
+      <div class="stu-info-rows">
+        <div class="stu-info-row"><span class="info-key">🏷 ID Card No.</span><span class="info-val" id="si-idcard">—</span></div>
+        <div class="stu-info-row"><span class="info-key">🎂 Date of Birth</span><span class="info-val" id="si-dob">—</span></div>
+        <div class="stu-info-row"><span class="info-key">📍 Address</span><span class="info-val" id="si-address">—</span></div>
+        <div class="stu-info-row"><span class="info-key">📞 Contact</span><span class="info-val" id="si-contact">—</span></div>
+        <div class="stu-info-row"><span class="info-key">🩸 Blood Group</span><span class="info-val" id="si-blood">—</span></div>
+        <div class="stu-info-row"><span class="info-key">👤 Guardian</span><span class="info-val" id="si-guardian">—</span></div>
+      </div>
+
+      <div class="stu-readonly-note">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Information can only be edited by School Admin
+      </div>
+    </div>
+
+    <div class="stu-fee-panel">
+      <div class="panel-head">
+        <h4>💰 Fee Status</h4>
+        <select class="month-select" id="stuFeeYear">
+          <option value="2024">2024</option>
+          <option value="2025" selected>2025</option>
+        </select>
+      </div>
+      <div class="fee-summary-row">
+        <div class="fee-sum-box green-box">
+          <div class="fee-sum-amt" id="stuTotalPaid">৳0</div>
+          <div class="fee-sum-lbl">Total Paid</div>
+        </div>
+        <div class="fee-sum-box red-box">
+          <div class="fee-sum-amt" id="stuTotalDue">৳0</div>
+          <div class="fee-sum-lbl">Total Due</div>
+        </div>
+        <div class="fee-sum-box blue-box">
+          <div class="fee-sum-amt" id="stuMonthlyFee">৳0</div>
+          <div class="fee-sum-lbl">Monthly Fee</div>
+        </div>
+      </div>
+      <div class="fee-months-grid" id="stuFeeGrid"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 8 — BUSINESS DASHBOARD
+═══════════════════════════════════════════════════════════ -->
+<section class="screen" id="screen-biz-dash">
+
+  <div class="dash-bar">
+    <div class="dash-bar-left">
+      <div class="dash-org-logo biz-logo-icon" id="bizDashLogo">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      </div>
+      <div>
+        <h3 class="dash-org-name" id="bizDashName">Business Name</h3>
+        <p class="dash-org-meta" id="bizDashMeta">Type · Owner</p>
+      </div>
+    </div>
+    <div class="dash-bar-right">
+      <select class="month-select" id="bizFilterMonth">
+        <option value="all">All Time</option>
+        <option value="01-2025">Jan 2025</option><option value="02-2025">Feb 2025</option>
+        <option value="03-2025">Mar 2025</option><option value="04-2025">Apr 2025</option>
+        <option value="05-2025">May 2025</option><option value="06-2025" selected>Jun 2025</option>
+        <option value="07-2025">Jul 2025</option><option value="08-2025">Aug 2025</option>
+        <option value="09-2025">Sep 2025</option><option value="10-2025">Oct 2025</option>
+        <option value="11-2025">Nov 2025</option><option value="12-2025">Dec 2025</option>
+      </select>
+      <button class="panel-add-btn" id="addTxBtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Entry
+      </button>
+    </div>
+  </div>
+
+  <div class="biz-stats-row">
+    <div class="biz-stat income-stat">
+      <div class="biz-stat-top">
+        <span class="biz-stat-lbl">Total Income</span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <div class="biz-stat-val green-val" id="bizTotalIncome">৳0</div>
+      <div class="biz-stat-sub" id="bizIncomeSub">0 entries</div>
+    </div>
+    <div class="biz-stat expense-stat">
+      <div class="biz-stat-top">
+        <span class="biz-stat-lbl">Total Expense</span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#F87171" stroke-width="2"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>
+      </div>
+      <div class="biz-stat-val red-val" id="bizTotalExpense">৳0</div>
+      <div class="biz-stat-sub" id="bizExpenseSub">0 entries</div>
+    </div>
+    <div class="biz-stat profit-stat">
+      <div class="biz-stat-top">
+        <span class="biz-stat-lbl">Net Profit / Loss</span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div class="biz-stat-val" id="bizNetProfit">৳0</div>
+      <div class="biz-stat-sub" id="bizMargin">0% margin</div>
+    </div>
+  </div>
+
+  <div class="dash-main">
+    <div class="dash-panel tx-panel">
+      <div class="panel-head">
+        <h4>📋 Transactions</h4>
+        <div class="panel-actions">
+          <input type="text" class="search-box" id="txSearch" placeholder="🔍 Search...">
+          <select class="month-select small-sel" id="txTypeFilter">
+            <option value="all">All</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+        </div>
+      </div>
+      <div class="tx-list" id="txList">
+        <div class="empty-hint"><span>📋</span><p>No entries yet.<br>Click "+ Add Entry".</p></div>
+      </div>
+    </div>
+    <div class="dash-panel cat-panel">
+      <div class="panel-head"><h4>📊 Category Summary</h4></div>
+      <div class="cat-list" id="catList">
+        <div class="empty-hint"><span>📊</span><p>No data.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     ████████  MODALS  ████████
+═══════════════════════════════════════════════════════════ -->
+
+<!-- ─── Add Class ─── -->
+<div class="modal-bg" id="modal-add-class">
+  <div class="modal">
+    <div class="modal-head"><h3>+ Add New Class</h3><button class="modal-x" data-close="modal-add-class">✕</button></div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Class Name <span class="req">*</span></label>
+        <input type="text" id="nc-name" class="form-input" placeholder="e.g. Class 1 or Class 11 (Science)">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Section (optional)</label>
+          <input type="text" id="nc-section" class="form-input" placeholder="e.g. A, B, C">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Default Monthly Fee (৳)</label>
+          <input type="number" id="nc-fee" class="form-input" placeholder="0" min="0">
+        </div>
+      </div>
+      <span class="form-hint">Default fee can be changed per student later</span>
+      <div class="form-error" id="nc-error"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" data-close="modal-add-class">Cancel</button>
+      <button class="btn-primary" id="saveClassBtn"><span class="btn-text">Create Class</span><span class="btn-loader" style="display:none"></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Add / Edit Student ─── -->
+<div class="modal-bg" id="modal-student-form">
+  <div class="modal modal-lg">
+    <div class="modal-head"><h3 id="stuFormTitle">+ Add New Student</h3><button class="modal-x" data-close="modal-student-form">✕</button></div>
+    <div class="modal-body">
+      <div class="stu-form-layout">
+        <div class="stu-photo-upload">
+          <div class="photo-drop" id="photoDropZone">
+            <img id="photoPreviewImg" src="" alt="" style="display:none">
+            <div id="photoDropDefault">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#475569" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <p>Student Photo</p>
+            </div>
+          </div>
+          <input type="file" id="stuPhotoFile" accept="image/*" style="display:none">
+          <button class="btn-upload small-upload" type="button" onclick="document.getElementById('stuPhotoFile').click()">Choose Photo</button>
+          <span class="form-hint center-hint">JPG / PNG / WEBP</span>
+        </div>
+        <div class="stu-form-fields">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Student Name <span class="req">*</span></label>
+              <input type="text" id="nsf-name" class="form-input" placeholder="Full name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Roll Number <span class="req">*</span></label>
+              <input type="number" id="nsf-roll" class="form-input" placeholder="Roll" min="1">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Identity Card No. <span class="req">*</span></label>
+              <input type="text" id="nsf-idcard" class="form-input" placeholder="School ID card number">
+              <span class="form-hint">Student uses this to register</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Date of Birth <span class="req">*</span></label>
+              <input type="date" id="nsf-dob" class="form-input">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Address</label>
+            <input type="text" id="nsf-address" class="form-input" placeholder="Home address">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Contact Number <span class="req">*</span></label>
+              <input type="tel" id="nsf-contact" class="form-input" placeholder="01XXXXXXXXX">
+              <span class="form-hint">Student receives OTP on this number</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Monthly Fee (৳)</label>
+              <input type="number" id="nsf-fee" class="form-input" placeholder="0" min="0">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Parent / Guardian</label>
+              <input type="text" id="nsf-guardian" class="form-input" placeholder="Guardian's name">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Blood Group</label>
+              <select id="nsf-blood" class="form-input">
+                <option value="">— optional</option>
+                <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-error" id="nsf-error"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" data-close="modal-student-form">Cancel</button>
+      <button class="btn-primary" id="saveStudentBtn"><span class="btn-text">Save Student</span><span class="btn-loader" style="display:none"></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Student Detail ─── -->
+<div class="modal-bg" id="modal-student-detail">
+  <div class="modal modal-lg">
+    <div class="modal-head"><h3 id="detailModalName">Student Details</h3><button class="modal-x" data-close="modal-student-detail">✕</button></div>
+    <div class="modal-body" id="studentDetailBody"></div>
+    <div class="modal-foot">
+      <button class="btn-danger-outline" id="detailDeleteBtn">🗑 Delete</button>
+      <button class="btn-secondary" id="detailEditBtn">✏️ Edit</button>
+      <button class="btn-secondary" data-close="modal-student-detail">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Set Fee All ─── -->
+<div class="modal-bg" id="modal-set-fee">
+  <div class="modal">
+    <div class="modal-head"><h3>💰 Set Monthly Fee</h3><button class="modal-x" data-close="modal-set-fee">✕</button></div>
+    <div class="modal-body">
+      <p class="modal-desc" id="setFeeDesc"></p>
+      <div class="form-group">
+        <label class="form-label">Amount (৳) <span class="req">*</span></label>
+        <input type="number" id="feeAmtInput" class="form-input" placeholder="e.g. 500" min="0">
+        <span class="form-hint">This amount will be set for all students in this class for the selected month</span>
+      </div>
+      <div class="form-error" id="fee-set-error"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" data-close="modal-set-fee">Cancel</button>
+      <button class="btn-primary" id="saveFeeAllBtn"><span class="btn-text">Set Fee</span><span class="btn-loader" style="display:none"></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Add / Edit Transaction ─── -->
+<div class="modal-bg" id="modal-tx">
+  <div class="modal">
+    <div class="modal-head"><h3 id="txModalTitle">+ Add Transaction</h3><button class="modal-x" data-close="modal-tx">✕</button></div>
+    <div class="modal-body">
+      <div class="tx-type-row">
+        <button class="tx-type-btn tx-active income-type" data-type="income">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+          Income
+        </button>
+        <button class="tx-type-btn expense-type" data-type="expense">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/></svg>
+          Expense
+        </button>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description <span class="req">*</span></label>
+        <input type="text" id="tx-desc" class="form-input" placeholder="e.g. Sales Revenue / Rent Payment">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Amount (৳) <span class="req">*</span></label>
+          <input type="number" id="tx-amount" class="form-input" placeholder="0" min="0">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Date <span class="req">*</span></label>
+          <input type="date" id="tx-date" class="form-input">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Category</label>
+          <select id="tx-category" class="form-input">
+            <option value="">— optional</option>
+            <option>Sales / Revenue</option><option>Raw Materials</option>
+            <option>Staff Salary</option><option>Shop Rent</option>
+            <option>Utilities / Bills</option><option>Transport</option>
+            <option>Marketing</option><option>Equipment</option>
+            <option>Tax / VAT</option><option>Loan / EMI</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Payment Method</label>
+          <select id="tx-method" class="form-input">
+            <option value="">— optional</option>
+            <option>Cash</option><option>bKash</option><option>Nagad</option>
+            <option>Bank Transfer</option><option>Card</option><option>Cheque</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Note (optional)</label>
+        <textarea id="tx-note" class="form-input textarea-field" rows="2" placeholder="Additional details..."></textarea>
+      </div>
+      <div class="form-error" id="tx-error"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" data-close="modal-tx">Cancel</button>
+      <button class="btn-primary" id="saveTxBtn"><span class="btn-text">Save Entry</span><span class="btn-loader" style="display:none"></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Confirm Delete ─── -->
+<div class="modal-bg" id="modal-confirm">
+  <div class="modal modal-sm">
+    <div class="modal-head danger-head"><h3>⚠️ Confirm Delete</h3><button class="modal-x" data-close="modal-confirm">✕</button></div>
+    <div class="modal-body">
+      <p id="confirmMsg" class="confirm-msg">Are you sure you want to delete this?</p>
+      <p class="confirm-warn">This action cannot be undone.</p>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" data-close="modal-confirm">Cancel</button>
+      <button class="btn-danger" id="confirmDeleteBtn">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Settings Modal ─── -->
+<div class="modal-bg" id="modal-settings">
+  <div class="modal modal-settings">
+    <div class="modal-head"><h3>⚙️ Settings</h3><button class="modal-x" data-close="modal-settings">✕</button></div>
+    <div class="modal-body settings-body">
+
+      <!-- Section: Appearance -->
+      <div class="settings-section">
+        <p class="settings-section-label">APPEARANCE</p>
+
+        <div class="settings-row">
+          <div class="settings-row-left">
+            <div class="settings-ico">🌙</div>
+            <div>
+              <p class="settings-row-title">Dark Mode</p>
+              <p class="settings-row-sub">Switch between dark and light theme</p>
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="settings-row">
+          <div class="settings-row-left">
+            <div class="settings-ico">🌐</div>
+            <div>
+              <p class="settings-row-title">Language</p>
+              <p class="settings-row-sub">Interface language</p>
+            </div>
+          </div>
+          <select class="settings-select" id="langSelect">
+            <option value="en">English</option>
+            <option value="bn">বাংলা (soon)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Section: Account -->
+      <div class="settings-section">
+        <p class="settings-section-label">ACCOUNT</p>
+
+        <div class="settings-row settings-btn-row" id="updateLogoRow">
+          <div class="settings-row-left">
+            <div class="settings-ico">🖼️</div>
+            <div>
+              <p class="settings-row-title">Update Logo</p>
+              <p class="settings-row-sub">Change your school / business logo</p>
+            </div>
+          </div>
+          <button class="settings-action-btn" id="updateLogoBtn">Update</button>
+          <input type="file" id="updateLogoInput" accept="image/png,image/jpeg,image/svg+xml,image/webp" style="display:none">
+        </div>
+
+        <div class="settings-row settings-btn-row">
+          <div class="settings-row-left">
+            <div class="settings-ico">🔑</div>
+            <div>
+              <p class="settings-row-title">Change Password</p>
+              <p class="settings-row-sub">Update your login password</p>
+            </div>
+          </div>
+          <button class="settings-action-btn" id="changePassBtn">Change</button>
+        </div>
+
+        <div class="settings-row settings-btn-row">
+          <div class="settings-row-left">
+            <div class="settings-ico">📧</div>
+            <div>
+              <p class="settings-row-title">Email Notifications</p>
+              <p class="settings-row-sub">Receive updates via email</p>
+            </div>
+          </div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="emailNotifToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Section: Data -->
+      <div class="settings-section">
+        <p class="settings-section-label">DATA & PRIVACY</p>
+
+        <div class="settings-row settings-btn-row">
+          <div class="settings-row-left">
+            <div class="settings-ico">📤</div>
+            <div>
+              <p class="settings-row-title">Export Data</p>
+              <p class="settings-row-sub">Download your data as CSV</p>
+            </div>
+          </div>
+          <button class="settings-action-btn" id="exportDataBtn">Export</button>
+        </div>
+
+        <div class="settings-row settings-btn-row">
+          <div class="settings-row-left">
+            <div class="settings-ico danger-ico">🗑️</div>
+            <div>
+              <p class="settings-row-title danger-text">Delete Account</p>
+              <p class="settings-row-sub">Permanently remove all data</p>
+            </div>
+          </div>
+          <button class="settings-action-btn danger-settings-btn" id="deleteAccountBtn">Delete</button>
+        </div>
+      </div>
+
+      <!-- Section: About -->
+      <div class="settings-section">
+        <p class="settings-section-label">ABOUT</p>
+        <div class="about-block">
+          <p class="about-logo-text">SayatHub</p>
+          <p class="about-version">Version 1.0.0</p>
+          <p class="about-by">Developed by <strong>SayatStudio</strong></p>
+          <div class="about-links">
+            <a href="mailto:sayatkart@gmail.com" class="about-link">📧 sayatkart@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ─── Change Password Modal ─── -->
+<div class="modal-bg" id="modal-change-pass">
+  <div class="modal modal-sm">
+    <div class="modal-head"><h3>🔑 Change Password</h3><button class="modal-x" data-close="modal-change-pass">✕</button></div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Current Password</label>
+        <div class="input-wrap">
+          <input type="password" id="cp-current" class="form-input" placeholder="••••••••">
+          <button class="eye-btn" data-for="cp-current" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">New Password</label>
+        <div class="input-wrap">
+          <input type="password" id="cp-new" class="form-input" placeholder="Min. 6 characters">
+          <button class="eye-btn" data-for="cp-new" type="button">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Confirm New Password</label>
+        <input type="password" id="cp-confirm" class="form-input" placeholder="••••••••">
+      </div>
+      <div class="form-error" id="cp-error"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-secondary" data-close="modal-change-pass">Cancel</button>
+      <button class="btn-primary" id="saveNewPassBtn"><span class="btn-text">Update Password</span><span class="btn-loader" style="display:none"></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Help Modal ─── -->
+<div class="modal-bg" id="modal-help">
+  <div class="modal modal-sm">
+    <div class="modal-head"><h3>❓ Help &amp; Support</h3><button class="modal-x" data-close="modal-help">✕</button></div>
+    <div class="modal-body">
+      <div class="help-grid">
+        <div class="help-item" id="openSayAIBtn">
+          <div class="help-icon ai-help-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div class="help-text">
+            <h4>SayAI</h4>
+            <p>AI Assistant — Ask anything</p>
+          </div>
+          <span class="help-arrow">›</span>
+        </div>
+        <a href="mailto:sayatkart@gmail.com" class="help-item">
+          <div class="help-icon email-help-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60A5FA" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></svg>
+          </div>
+          <div class="help-text">
+            <h4>Email Support</h4>
+            <p>sayatkart@gmail.com</p>
+          </div>
+          <span class="help-arrow">›</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── SayAI Chat Modal ─── -->
+<div class="modal-bg" id="modal-sayai">
+  <div class="modal modal-chat">
+    <div class="modal-head sayai-head">
+      <div class="sayai-brand">
+        <div class="sayai-orb">AI</div>
+        <div>
+          <h3>SayAI</h3>
+          <p class="sayai-online">● Online · Powered by Claude</p>
+        </div>
+      </div>
+      <button class="modal-x" data-close="modal-sayai">✕</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-msg ai-msg">
+        <div class="msg-avatar ai-avatar">AI</div>
+        <div class="msg-bubble ai-bubble">
+          Hello! I'm SayAI. Ask me anything about SayatHub — managing schools, students, fees, or business accounts. I can also speak Bengali! 😊
+        </div>
+      </div>
+    </div>
+    <div class="chat-foot">
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your question..." autocomplete="off">
+        <button class="chat-send" id="chatSendBtn" title="Send">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <span class="btn-loader" id="chatLoader" style="display:none"></span>
+        </button>
+      </div>
+      <p class="chat-disclaimer">SayAI may make mistakes. Verify important information.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     TOAST  &  PAGE LOADER
+═══════════════════════════════════════════════════════════ -->
+<div class="toast" id="toast">
+  <span class="toast-ico" id="toastIco">✓</span>
+  <span id="toastMsg">Saved!</span>
+</div>
+
+<div class="page-loader" id="pageLoader">
+  <div class="loader-ring"></div>
+  <p>Loading...</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     FIREBASE SDK  v10 Compat
+═══════════════════════════════════════════════════════════ -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+
+<!-- App Scripts — order matters -->
+<script src="js/firebase-config.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
